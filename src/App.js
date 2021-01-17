@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import MembersContainer from './components/members/MembersContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    members: []
 }
+
+componentDidMount() {
+    fetch('http://localhost:3000/members')
+    .then((response) => response.json())
+    .then(membersList => {
+        this.setState({ members: membersList });
+    })
+}
+
+  render(){
+    return(
+      <MembersContainer members={this.state.members}/>
+    )
+  }
+}
+
+
 
 export default App;
