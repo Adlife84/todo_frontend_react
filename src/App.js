@@ -18,8 +18,7 @@ import Tasks from './components/test/Tasks'
 class App extends Component {
 
   state = {
-    members: [],
-    tasks: []
+    members: []
 }
 
 componentDidMount() {
@@ -29,8 +28,6 @@ componentDidMount() {
         this.setState({ members: membersList });
     });
 }
-
-
 
 
   render(){

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Task from './Task';
 import TaskComponent from './TaskComponent';
 
 
@@ -10,21 +9,39 @@ class TasksContainer extends Component {
     super(props);
     
     this.state = {
-        tasks: [],
-        memberID : props.match.params.id
+        memberID : props.match.params.id,
+        member: {},
+        tasks: []
+
     };
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3000/members/${this.state.memberID}/tasks`)
-    .then(data => data.json())
-    .then(data => {
-      this.setState({ tasks: data });
-    })
- 
-    .catch(error => {
-      console.log('Error fetching and parsing data', error);
-    });
+    Promise.all([
+    
+      // Make fetch to get Member from members/:id data from API
+      fetch(`http://localhost:3000/members/${this.state.memberID}`)
+            .then(data => data.json())
+            .then(data => {
+              this.setState({ member: data });
+            })
+        
+            .catch(error => {
+              console.log('Error fetching and parsing data', error);
+            }),
+
+      // Make fetch to get all tasks from Member by GET members/:id/tasks
+      fetch(`http://localhost:3000/members/${this.state.memberID}/tasks`)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({ tasks: data });
+      })
+  
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      })
+    ])
+    
   }
 
   render(){
@@ -33,7 +50,7 @@ class TasksContainer extends Component {
 
         <div className="instructor-wrapper">
 
-       hi <TaskComponent tasks={this.state.tasks}/>
+        <TaskComponent state={this.state}/>
 
         </div>
 
@@ -43,34 +60,3 @@ class TasksContainer extends Component {
 }
 
 export default TasksContainer;
-
-
-
-
-// const TasksContainer = ({match}) => {
-  
-
-
-//   function fetchData(id) {
-//     return fetch(`http://localhost:3000/members/${id}/tasks`)
-//                 .then(res => res.json())
-//   }
-
-//   let data = fetchData(id);
-//   console.log(data);
-//   // let tasks = data.map((task) => {
-//   //   return <Task   
-//   //                   title={task.title}
-//   //                   done={task.done}
-//   //                   key={task.id} 
-//   //                   />
-//   // }); 
-//   return (
-//     <div className="tasks">
-     
-//        asdasd  {id}
-     
-//     </div>
-//   );
-// }
-
