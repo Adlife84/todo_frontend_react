@@ -1,21 +1,24 @@
 import React from 'react';
-import Client from './Client';
+import Member from './Member';
 
 
 const MembersContainer = (props) => {
-  let clients = props.members.map((client) => {
-    return <Client   first_name={client.first_name}
-                   last_name={client.last_name}
-                   img={client.img_src}
-                   tel={client.tel}
-                   email={client.email}
-                   address={client.address}
-                   key={client.id} />
+  let members = props.members.map((member) => {
+    return <Member   
+                    first_name={member.first_name}
+                    last_name={member.last_name}
+                    // img={member.img_src}
+                    // tel={member.tel}
+                    // email={member.email}
+                    // address={member.address}
+                    id={member.id}
+                    key={member.id} 
+                    />
   }); 
   return (
     <div className="clients">
      
-        {clients}    
+        {members}    
      
     </div>
   );
