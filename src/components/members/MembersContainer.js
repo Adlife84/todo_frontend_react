@@ -1,5 +1,7 @@
 import React from 'react';
 import Member from './Member';
+import { NavLink } from 'react-router-dom';
+import AddMemberForm from './AddMemberForm';
 
 
 const MembersContainer = (props) => {
@@ -12,14 +14,14 @@ const MembersContainer = (props) => {
                     // email={member.email}
                     // address={member.address}
                     id={member.id}
-                    key={member.id} 
-                    />
+                    key={member.id}
+                    removeMember={props.removeMember} 
+            />
   }); 
   return (
     <div className="clients">
-     
-        {members}    
-     
+         {members}
+         <AddMemberForm addMember={props.addMember}/>
     </div>
   );
 }

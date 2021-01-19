@@ -13,21 +13,86 @@ import TasksContainer from './components/tasks/TasksContainer';
 import NotFound from './components/NotFound';
 import Test from './components/test/Test';
 import Tasks from './components/test/Tasks'
+import AddMemberForm from './components/members/AddMemberForm'
 
 
 class App extends Component {
 
   state = {
     members: []
-}
+  }
 
-componentDidMount() {
-    fetch('http://localhost:3000/members')
-    .then(response => response.json())
-    .then(membersList => {
-        this.setState({ members: membersList });
-    });
-}
+  componentDidMount() {
+      fetch('http://localhost:3000/members')
+      .then(response => response.json())
+      .then(membersList => {
+          this.setState({ members: membersList });
+      });
+  }
+
+  // Here I try to delete my Members from state and databse 
+  handleRemoveMember = (id) => {
+    //Checked that I got id from Memebers
+    console.log(id);
+
+    // // Remove data from state
+    // this.setState(prevState => {
+    //     return {
+    //         members: prevState.members.filter(p => p.id !== id)
+    //     };
+
+    // });
+
+  // Remove data from database by DELETE request with id
+  fetch('http://localhost:3000/members/' + id, {
+    method: 'DELETE',
+    })
+    .then(res => res.text()) // or res.json()
+    .then(res => console.log(res))
+
+    this.updateData();
+  }
+
+
+
+  // Here I try to add my new Member object to state and after thet make POST request to my backend datebase
+  handleAddMember = (member) => {
+      //Checked that I got new Memeber
+      console.log(member);
+
+      const data = member;
+
+      fetch('http://localhost:3000/members', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+      // Add data to state before add it on date base
+      // this.setState(prevState => {
+      //     return {
+      //         members: prevState.members.push(member)
+      //     };
+  
+      // });
+
+  
+  
+   
+
+
+
+  }
+
 
 
   render(){
@@ -38,10 +103,15 @@ componentDidMount() {
           <Route
                  exact path='/members'
                   render={(props) => (
-                    <MembersContainer members={this.state.members}/>
+                    <MembersContainer 
+                                      members={this.state.members}
+                                      removeMember={this.handleRemoveMember}
+                                      addMember={this.handleAddMember}
+                                      />
                     )}
           />
           <Route path='/members/:id/tasks' component={TasksContainer}/>
+          <Route path='/members/new' component={AddMemberForm}/>
           <Route exact path='/test'component={Test} />
           <Route component={NotFound} />
         </Switch>

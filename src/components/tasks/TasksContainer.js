@@ -44,13 +44,34 @@ class TasksContainer extends Component {
     
   }
 
+  handleRemoveTask = (memberID, taskID) => {
+    //Checked that I got id from Items
+    console.log(memberID, taskID);
+  
+    // Remove data from state
+    this.setState(prevState => {
+        return {
+            tasks: prevState.tasks.filter(p => p.id !== taskID)
+        };
+  
+    });
+  
+    // Remove data from database by DELETE request with id
+    fetch('http://localhost:3000/members/' + memberID + '/tasks/' + taskID, {
+      method: 'DELETE',
+    })
+    .then(res => res.text()) // or res.json()
+    .then(res => console.log(res))
+  }
+  
+
   render(){
     return (
       <div className="instructor-grid">
 
         <div className="instructor-wrapper">
 
-        <TaskComponent state={this.state}/>
+          <TaskComponent state={this.state} removeTask={this.handleRemoveTask}/>
 
         </div>
 
