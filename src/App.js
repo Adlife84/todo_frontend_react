@@ -11,9 +11,7 @@ import Header from './components/Header';
 import MembersContainer from './components/members/MembersContainer';
 import TasksContainer from './components/tasks/TasksContainer';
 import NotFound from './components/NotFound';
-import Test from './components/test/Test';
-import Tasks from './components/test/Tasks'
-import AddMemberForm from './components/members/AddMemberForm'
+import NewMember from './components/members/NewMember'
 
 
 class App extends Component {
@@ -50,7 +48,6 @@ class App extends Component {
     .then(res => res.text()) // or res.json()
     .then(res => console.log(res))
 
-    this.updateData();
   }
 
 
@@ -84,15 +81,7 @@ class App extends Component {
       //     };
   
       // });
-
-  
-  
-   
-
-
-
   }
-
 
 
   render(){
@@ -110,9 +99,15 @@ class App extends Component {
                                       />
                     )}
           />
+          <Route
+                 exact path='/members/new'
+                  render={(props) => (
+                    <NewMember 
+                                      addMember={this.handleAddMember}
+                                      />
+                    )}
+          />
           <Route path='/members/:id/tasks' component={TasksContainer}/>
-          <Route path='/members/new' component={AddMemberForm}/>
-          <Route exact path='/test'component={Test} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

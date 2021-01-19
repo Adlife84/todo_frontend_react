@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-class AddMemberForm extends Component {
+class NewMember extends Component {
     state = {
-     
+ 
     };
 
     handleValueChangeFirstName = (e) => {
@@ -10,7 +10,7 @@ class AddMemberForm extends Component {
     }
     
     handleValueChangeLastName = (e) => {
-        this.setState({ last_name: e.target.value }); //{ member: data }
+        this.setState({ last_name: e.target.value });
     }
 
     handleValueChangeRole = (e) => {
@@ -20,14 +20,15 @@ class AddMemberForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log('Hi from submite', this.state)
-        this.props.addMember(props.memberID, this.state);
+        this.props.addMember(this.state);
         this.setState({ member: '' }); //Reset input after added it to state
     }
 
     render() {
         
         return(
-            
+            <div>
+                <h1>Add New Member</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input 
                         type="text"
@@ -52,9 +53,10 @@ class AddMemberForm extends Component {
                         value="Add player"
                     />
                 </form>
+            </div>
         
         );
     }
 }
 
-export default AddMemberForm;
+export default NewMember;

@@ -1,6 +1,5 @@
 import React from 'react';
 import Member from './Member';
-import { NavLink } from 'react-router-dom';
 import AddMemberForm from './AddMemberForm';
 
 
@@ -9,13 +8,15 @@ const MembersContainer = (props) => {
     return <Member   
                     first_name={member.first_name}
                     last_name={member.last_name}
-                    // img={member.img_src}
-                    // tel={member.tel}
-                    // email={member.email}
-                    // address={member.address}
+                    img={member.img_src}
+                    tel={member.tel}
+                    email={member.email}
+                    address={member.address}
+                    role={member.role}
                     id={member.id}
                     key={member.id}
-                    removeMember={props.removeMember} 
+                    removeMember={props.removeMember}
+                    addTask={props.addTask}
             />
   }); 
   return (

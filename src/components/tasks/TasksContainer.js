@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TaskComponent from './TaskComponent';
+import AddTaskForm from './AddTaskForm';
 
 
 
@@ -63,6 +64,34 @@ class TasksContainer extends Component {
     .then(res => res.text()) // or res.json()
     .then(res => console.log(res))
   }
+
+
+
+
+  // Here I try to add my new Task object to Member making a POST request to my backend datebase
+  handleAddTask = (memberID, task) => {
+    //Checked that I got new task object { title: "Do something", done: "false"}
+    console.log(task);
+
+    const data = task;
+    // POST request http://localhost:3000/members/1/tasks
+    fetch('http://localhost:3000/members/' + memberID + '/tasks', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+    this.componentDidMount()
+  }
   
 
   render(){
@@ -72,7 +101,7 @@ class TasksContainer extends Component {
         <div className="instructor-wrapper">
 
           <TaskComponent state={this.state} removeTask={this.handleRemoveTask}/>
-
+          <AddTaskForm memberID={this.state.memberID} addTask={this.handleAddTask}/>
         </div>
 
       </div>
