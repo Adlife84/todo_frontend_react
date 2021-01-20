@@ -72,7 +72,7 @@ class UpdateMemberForm extends Component {
     }
 
     handleValueChangePhone = (e) => {
-        this.setState({ phone: e.target.value });
+        this.setState({ tel: e.target.value });
     }
 
     handleValueChangeEmail = (e) => {
@@ -130,7 +130,7 @@ class UpdateMemberForm extends Component {
                     <fieldset>
                         <input 
                             type="text"
-                            value={this.state.phone}
+                            value={this.state.tel}
                             onChange={this.handleValueChangePhone}
                             placeholder="Enter your phone"
                         />
@@ -145,7 +145,7 @@ class UpdateMemberForm extends Component {
                     <fieldset>
                         <input 
                             type="text"
-                            value={this.state.img_url}
+                            value={this.state.img}
                             onChange={this.handleValueChangeUrl}
                             placeholder="Enter a URL of img"
                         />
@@ -166,7 +166,7 @@ class UpdateMemberForm extends Component {
                    
                     <input 
                         type="submit"
-                        value="Add Member"
+                        value="Update"
                     />
                 </form>
             </div>

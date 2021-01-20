@@ -1,6 +1,9 @@
 import React from 'react';
 import Member from './Member';
 import AddMemberForm from './AddMemberForm';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Row} from 'react-bootstrap'
+
 
 
 const MembersContainer = (props) => {
@@ -20,7 +23,9 @@ const MembersContainer = (props) => {
   }); 
   return (
     <div className="clients">
-         {members}
+        <Row>
+          {members}
+        </Row>
          <AddMemberForm addMember={props.addMember}/>
     </div>
   );
