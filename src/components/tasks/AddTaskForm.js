@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import { Form, Col, Row, Button, Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 class AddTaskForm extends Component {
     state = {
         title: ''
@@ -18,22 +19,16 @@ class AddTaskForm extends Component {
     }
 
     render() {
-        
-        return(
-            
-                <form onSubmit={this.handleSubmit}>
-                    <input 
-                        type="text"
-                        value={this.state.title.value}
-                        onChange={this.handleValueChangeTitle}
-                        placeholder="Enter title of task"
-                    />
-                    <input 
-                        type="submit"
-                        value="Add task"
-                    />
-                </form>
-        
+        return(    
+            <Form className="row" onSubmit={this.handleSubmit}>
+                <Form.Control className="col-8"
+                    type="text"
+                    value={this.state.title}
+                    onChange={this.handleValueChangeTitle}
+                    placeholder="Enter title of task"
+                />
+                <Button className="col-4" type="submit">Add task</Button>
+            </Form>
         );
     }
 }

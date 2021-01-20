@@ -13,7 +13,11 @@ code {
 }
 
 img {
-  width: 100px;
- 
+  max-width: 200px;
+}
+
+.MemberTitle {
+  color: red;
+  font-size: 76px;
 }
 

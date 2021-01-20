@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import TaskComponent from './TaskComponent';
 import AddTaskForm from './AddTaskForm';
-
+import { Form, Col, Row, Button, Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 class TasksContainer extends Component {  
@@ -96,15 +97,13 @@ class TasksContainer extends Component {
 
   render(){
     return (
-      <div className="instructor-grid">
-
-        <div className="instructor-wrapper">
-
-          <TaskComponent state={this.state} removeTask={this.handleRemoveTask}/>
-          <AddTaskForm memberID={this.state.memberID} addTask={this.handleAddTask}/>
-        </div>
-
-      </div>
+   
+          <TaskComponent 
+                          state={this.state} 
+                          removeTask={this.handleRemoveTask}
+                          handleAddTask={this.handleAddTask}
+                          />
+      
     );
   }
 }
