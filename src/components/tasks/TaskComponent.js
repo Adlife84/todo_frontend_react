@@ -1,5 +1,6 @@
 import React from 'react';
-import Task from './Task'
+import Task from './Task';
+import { NavLink } from 'react-router-dom';
 
 const TaskComponent = (props) => {
   let tasks = props.state.tasks.map((task) => {
@@ -16,6 +17,7 @@ const TaskComponent = (props) => {
   return (
     <div>
         <h1>{props.state.member.first_name} {props.state.member.last_name}</h1>
+        <span><NavLink exact to={ "/members/" + props.state.memberID }>Update</NavLink></span>
         <p>{props.state.member.role}</p>
 
         <ul>

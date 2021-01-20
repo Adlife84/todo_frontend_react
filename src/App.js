@@ -11,7 +11,8 @@ import Header from './components/Header';
 import MembersContainer from './components/members/MembersContainer';
 import TasksContainer from './components/tasks/TasksContainer';
 import NotFound from './components/NotFound';
-import NewMember from './components/members/NewMember'
+import NewMember from './components/members/NewMember';
+import UpdateMemberForm from './components/members/UpdateMemberForm';
 
 
 class App extends Component {
@@ -27,6 +28,8 @@ class App extends Component {
           this.setState({ members: membersList });
       });
   }
+
+  
 
   // Here I try to delete my Members from state and databse 
   handleRemoveMember = (id) => {
@@ -73,15 +76,9 @@ class App extends Component {
       .catch((error) => {
         console.error('Error:', error);
       });
-
-      // Add data to state before add it on date base
-      // this.setState(prevState => {
-      //     return {
-      //         members: prevState.members.push(member)
-      //     };
-  
-      // });
   }
+
+
 
 
   render(){
@@ -107,7 +104,16 @@ class App extends Component {
                                       />
                     )}
           />
+          {/* <Route
+                 exact path='/members/:id'
+                  render={(props, {match}) => (
+                    <UpdateMemberForm 
+                                      addMember={this.handleAddMember}
+                                      />
+                    )}
+          /> */}
           <Route path='/members/:id/tasks' component={TasksContainer}/>
+          <Route path='/members/:id' component={UpdateMemberForm}/>
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

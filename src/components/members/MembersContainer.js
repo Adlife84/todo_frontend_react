@@ -8,10 +8,9 @@ const MembersContainer = (props) => {
     return <Member   
                     first_name={member.first_name}
                     last_name={member.last_name}
-                    img={member.img_src}
+                    img={member.img}
                     tel={member.tel}
                     email={member.email}
-                    address={member.address}
                     role={member.role}
                     id={member.id}
                     key={member.id}

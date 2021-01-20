@@ -1,16 +1,63 @@
 import React, {Component} from 'react';
 
-class NewMember extends Component {
-    state = {
-        first_name: "",
-        last_name: "",
-        role: "",
-        phone: "",
-        email: "",
-        img: "",
-        status: "",
-        color: ""
-    };
+class UpdateMemberForm extends Component {
+
+    constructor(props, {match}) {
+
+        super(props, {match});
+    
+        this.state = {
+            memberID: props.match.params.id,
+            first_name: "",
+            last_name: "",
+            role: "",
+            phone: "",
+            email: "",
+            img: "",
+            status: "",
+            color: ""
+          
+        };
+    }
+    componentDidMount() {
+        fetch('http://localhost:3000/members/' + this.state.memberID)
+        .then(response => response.json())
+        .then(membersList => {
+            this.setState(membersList);
+        });
+    }
+
+    // Here I try to Update my Member make PUT request to my backend datebase
+    handleUpdateMember = (member) => {
+    //Checked that I got new Memeber
+    console.log(member);
+
+    const data = member;
+
+    fetch('http://localhost:3000/members/' + member.memberID, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+
+    handleGetMember = (id) => {
+        fetch('http://localhost:3000/members/' + id)
+        .then(response => response.json())
+        .then(membersList => {
+            this.setState({ members: membersList });
+        });
+      }
 
     handleValueChangeFirstName = (e) => {
         this.setState({ first_name: e.target.value });
@@ -47,7 +94,7 @@ class NewMember extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log('Hi from submite', this.state)
-        this.props.addMember(this.state);
+        this.handleUpdateMember(this.state);
         this.setState({  }); //Reset input after added it to state
         console.log(this.state);
     }
@@ -73,10 +120,10 @@ class NewMember extends Component {
                             placeholder="Enter a last name"
                         />
                          <input 
-                        type="text"
-                        value={this.state.role}
-                        onChange={this.handleValueChangeRole}
-                        placeholder="Enter your role"
+                            type="text"
+                            value={this.state.role}
+                            onChange={this.handleValueChangeRole}
+                            placeholder="Enter your role"
                     />
                     </fieldset>
 
@@ -128,4 +175,4 @@ class NewMember extends Component {
     }
 }
 
-export default NewMember;
+export default UpdateMemberForm;

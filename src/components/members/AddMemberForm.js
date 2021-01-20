@@ -20,7 +20,7 @@ class AddMemberForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log('Hi from submite', this.state)
-        this.props.addMember(props.memberID, this.state);
+        this.props.addMember(this.props.memberID, this.state);
         this.setState({ member: '' }); //Reset input after added it to state
     }
 
