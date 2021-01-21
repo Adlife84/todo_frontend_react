@@ -35,6 +35,7 @@ class AddMemberForm extends Component {
                         value={this.state.value}
                         onChange={this.handleValueChangeFirstName}
                         placeholder="Enter a first name"
+                        
                     />
                     <Form.Control 
                         type="text"

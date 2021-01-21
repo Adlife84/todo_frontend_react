@@ -47,15 +47,21 @@ img {
 .member-title {
   color: #007bff;
   font-size: 76px;
+
 }
 
 .member-role {
-  color: #007bff;
+  color: rgb(20, 20, 20);
+  
   
 }
 
 .myCard {
   backdrop-filter: blur(5px);
+}
+
+.card-title:hover {
+  text-decoration: none;
 }
 
 .tasks {

@@ -188,9 +188,9 @@ class UpdateMemberForm extends Component {
                                     />
                             </Form.Group>
                 
-                            <Button variant="outline-success"   className="mr-3" type="submit" value="Update">Update</Button>
+                            <Button variant="success"   className="mr-3" type="submit" value="Update">Update</Button>
                             <NavLink to="/members">
-                                <Button   variant="outline-primary"  type="submit" value="Update">Cancel</Button>
+                                <Button   variant="primary"  type="submit" value="Update">Cancel</Button>
                             </NavLink>
                             
                             

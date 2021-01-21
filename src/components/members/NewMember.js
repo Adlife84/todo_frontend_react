@@ -52,6 +52,7 @@ class NewMember extends Component {
         this.props.addMember(this.state);
         this.setState({  }); //Reset input after added it to state
         console.log(this.state);
+        window.location.href = '/members';
     }
 
     render() {
@@ -71,6 +72,7 @@ class NewMember extends Component {
                                     type="text"
                                     onChange={this.handleValueChangeFirstName}
                                     placeholder="Enter a first name"
+                                    required
                                     />
                                 <Form.Label>Last name</Form.Label>
                                 <Form.Control className="mb-2"
@@ -78,6 +80,7 @@ class NewMember extends Component {
                                     value={this.state.last_name}
                                     onChange={this.handleValueChangeLastName}
                                     placeholder="Enter a last name"
+                                    required
                                     />
                                 <Form.Label>Role</Form.Label>
                                 <Form.Control className="mb-2"
@@ -85,22 +88,25 @@ class NewMember extends Component {
                                     value={this.state.role}
                                     onChange={this.handleValueChangeRole}
                                     placeholder="Enter your role"
+                                    required
                                     />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Phone</Form.Label>
                                 <Form.Control className="mb-2"
-                                    type="text"
+                                    type="tel"
                                     value={this.state.tel}
                                     onChange={this.handleValueChangePhone}
                                     placeholder="Enter your phone"
+                                    required
                                     />
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control className="mb-2"
-                                    type="text"
+                                    type="email"
                                     value={this.state.email}
                                     onChange={this.handleValueChangeEmail}
                                     placeholder="Enter your email"
+                                    required
                                     />
                             </Form.Group>
                             <Form.Group >

@@ -27,10 +27,11 @@ class AddTaskForm extends Component {
                         value={this.state.title}
                         onChange={this.handleValueChangeTitle}
                         placeholder="Enter title of task"
+                        required
                         />
                 </Col>
                 <Col>
-                    <Button className="" type="submit">Add Task</Button>
+                    <Button variant="success" type="submit">Add New Task</Button>
                 </Col>
             </Form>
         );

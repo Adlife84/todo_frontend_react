@@ -29,8 +29,6 @@ const MembersContainer = (props) => {
         </Row>
         <Row>
            {members}
-  
-          {/* <AddMemberForm addMember={props.addMember}/> */}
         </Row>
       </Container>
   );

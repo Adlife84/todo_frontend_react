@@ -5,11 +5,11 @@ import {Button, Row, Col} from 'react-bootstrap'
 const Task = (props) => (
   <Row className="task m-3">
       <Col >
-        
+
         <div className="tasks">{props.title}</div>
       </Col>
       <Col >
-        <Button className="mr-1" variant="danger" className="button" onClick={ () => props.removeTask(props.memberID, props.taskID)}>Delete</Button>
+        <Button className="mr-1" variant="danger" className="button" onClick={ () => props.removeTask(props.memberID, props.taskID)}>X</Button>
       </Col>
   </Row>
 );
