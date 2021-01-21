@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Image, Container, Form, Button, Row, Col } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { NavLink } from 'react-router-dom';
 
 class UpdateMemberForm extends Component {
 
@@ -187,7 +188,11 @@ class UpdateMemberForm extends Component {
                                     />
                             </Form.Group>
                 
-                            <Button    type="submit" value="Update">Update</Button>
+                            <Button variant="outline-success"   className="mr-3" type="submit" value="Update">Update</Button>
+                            <NavLink to="/members">
+                                <Button   variant="outline-primary"  type="submit" value="Update">Cancel</Button>
+                            </NavLink>
+                            
                             
                         </Form>
                     </Col>
