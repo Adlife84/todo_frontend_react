@@ -5,6 +5,7 @@ import {
   Route, 
   Switch 
 } from 'react-router-dom';
+import { Container } from 'react-bootstrap'
 
 //App my components
 import Header from './components/Header';
@@ -13,6 +14,7 @@ import TasksContainer from './components/tasks/TasksContainer';
 import NotFound from './components/NotFound';
 import NewMember from './components/members/NewMember';
 import UpdateMemberForm from './components/members/UpdateMemberForm';
+
 
 
 class App extends Component {
@@ -84,38 +86,38 @@ class App extends Component {
   render(){
     return(
       <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route
-                 exact path='/members'
-                  render={(props) => (
-                    <MembersContainer 
-                                      members={this.state.members}
-                                      removeMember={this.handleRemoveMember}
-                                      addMember={this.handleAddMember}
-                                      />
-                    )}
-          />
-          <Route
-                 exact path='/members/new'
-                  render={(props) => (
-                    <NewMember 
-                                      addMember={this.handleAddMember}
-                                      />
-                    )}
-          />
-          {/* <Route
-                 exact path='/members/:id'
-                  render={(props, {match}) => (
-                    <UpdateMemberForm 
-                                      addMember={this.handleAddMember}
-                                      />
-                    )}
-          /> */}
-          <Route path='/members/:id/tasks' component={TasksContainer}/>
-          <Route path='/members/:id' component={UpdateMemberForm}/>
-          <Route component={NotFound} />
-        </Switch>
+          <Header />
+          <Switch>
+            <Route
+                  exact path='/members'
+                    render={(props) => (
+                      <MembersContainer 
+                                        members={this.state.members}
+                                        removeMember={this.handleRemoveMember}
+                                        addMember={this.handleAddMember}
+                                        />
+                      )}
+            />
+            <Route
+                  exact path='/members/new'
+                    render={(props) => (
+                      <NewMember 
+                                        addMember={this.handleAddMember}
+                                        />
+                      )}
+            />
+            {/* <Route
+                  exact path='/members/:id'
+                    render={(props, {match}) => (
+                      <UpdateMemberForm 
+                                        addMember={this.handleAddMember}
+                                        />
+                      )}
+            /> */}
+            <Route path='/members/:id/tasks' component={TasksContainer}/>
+            <Route path='/members/:id' component={UpdateMemberForm}/>
+            <Route component={NotFound} />
+          </Switch>
       </BrowserRouter>
     )
   }

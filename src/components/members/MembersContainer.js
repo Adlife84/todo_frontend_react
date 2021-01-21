@@ -2,7 +2,7 @@ import React from 'react';
 import Member from './Member';
 import AddMemberForm from './AddMemberForm';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Row} from 'react-bootstrap'
+import {Row, Col, Container} from 'react-bootstrap'
 
 
 
@@ -13,6 +13,7 @@ const MembersContainer = (props) => {
                     last_name={member.last_name}
                     img={member.img}
                     tel={member.tel}
+                    color={member.color}
                     email={member.email}
                     role={member.role}
                     id={member.id}
@@ -22,12 +23,16 @@ const MembersContainer = (props) => {
             />
   }); 
   return (
-    <div className="clients">
-        <Row>
-          {members}
+      <Container >
+        <Row className="justify-content-center m-5">
+            <h1>My Start UP - Dream Team</h1>
         </Row>
-         <AddMemberForm addMember={props.addMember}/>
-    </div>
+        <Row>
+           {members}
+  
+          {/* <AddMemberForm addMember={props.addMember}/> */}
+        </Row>
+      </Container>
   );
 }
 

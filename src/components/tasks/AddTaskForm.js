@@ -20,14 +20,18 @@ class AddTaskForm extends Component {
 
     render() {
         return(    
-            <Form className="row" onSubmit={this.handleSubmit}>
-                <Form.Control className="col-8"
-                    type="text"
-                    value={this.state.title}
-                    onChange={this.handleValueChangeTitle}
-                    placeholder="Enter title of task"
-                />
-                <Button className="col-4" type="submit">Add task</Button>
+            <Form className="row mt-3" onSubmit={this.handleSubmit}>
+                <Col >
+                    <Form.Control className=""
+                        type="text"
+                        value={this.state.title}
+                        onChange={this.handleValueChangeTitle}
+                        placeholder="Enter title of task"
+                        />
+                </Col>
+                <Col>
+                    <Button className="" type="submit">Add Task</Button>
+                </Col>
             </Form>
         );
     }
