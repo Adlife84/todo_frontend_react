@@ -17,7 +17,7 @@ const TaskComponent = (props) => {
   }); 
 
   return (
-    <Container className="animate__animated animate__bounce myCard mt-5 rounded" style={{background: props.state.member.color}}>
+    <Container className="pb-3 myCard mt-5 rounded" style={{background: props.state.member.color}}>
         <Row className="p-5" >
           <Col>
             <img className="mt-5 rounded-circle mx-auto d-block"  src={props.state.member.img} alt={props.role} />

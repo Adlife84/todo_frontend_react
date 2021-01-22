@@ -47,7 +47,7 @@ class Task extends Component {
                     onChange={this.handleInputChange}
                 />
 
-              { this.state.done? <h3 className="tasks" style={{ textDecorationLine: 'line-through' }}>{this.props.task.title}</h3> : <h3 className="">{this.props.task.title}</h3> } 
+              { this.state.done? <h4 className="tasks font-italic" style={{ textDecorationLine: 'line-through', color: 'grey'}}>{this.props.task.title}</h4> : <h4 className="">{this.props.task.title}</h4> } 
           
               <Button className="mr-1" variant="danger" onClick={ () => this.props.removeTask(this.props.task.member_id, this.props.task.id)}>X</Button>
           

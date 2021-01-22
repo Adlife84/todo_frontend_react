@@ -100,7 +100,7 @@ class UpdateMemberForm extends Component {
         this.handleUpdateMember(this.state);
         this.setState({  }); //Reset input after added it to state
         console.log(this.state);
-        window.location.href = '/members/' + this.state.memberID + 'tasks';
+        window.location.href = '/members/' + this.state.memberID + '/tasks';
     }
 
 
@@ -188,17 +188,17 @@ class UpdateMemberForm extends Component {
                                             as="select"
                                             value={this.state.color}
                                             onChange={this.handleValueChangeColor}>
-                                    <option value="rgba(255, 255, 255, 0.5)">White</option>
-                                    <option value="rgba(137, 165, 255, 0.5)">Blue</option>
-                                    <option value="rgba(240, 136, 40, 0.5)">Orange</option>
-                                    <option value="rgba(255, 15, 19, 0.5)">Red</option>
-                                    <option value="rgba(255, 251, 15, 0.5)">Yellow</option>
-                                    <option value="rgba(204, 0, 190, 0.5)">Pink</option>
-                                    <option value="rgba(53, 153, 0, 0.5)">Green</option>
+                                            <option value="rgba(255, 255, 255, 0.5)">White</option>
+                                            <option value="rgba(137, 165, 255, 0.5)">Blue</option>
+                                            <option value="rgba(240, 136, 40, 0.5)">Orange</option>
+                                            <option value="rgba(255, 15, 19, 0.5)">Red</option>
+                                            <option value="rgba(255, 251, 15, 0.5)">Yellow</option>
+                                            <option value="rgba(204, 0, 190, 0.5)">Pink</option>
+                                            <option value="rgba(53, 153, 0, 0.5)">Green</option>
                                 </Form.Control>
                             </Form.Group>
                             <Button variant="success"   className="mr-3" type="submit" value="Update">Update</Button>
-                            <NavLink to="/members">
+                            <NavLink to="/members/">
                                 <Button   variant="primary"  type="submit" >Cancel</Button>
                             </NavLink>
                         </Form>

@@ -18,7 +18,7 @@ const Member = (props) => (
               </NavLink>
             </Card.Title>
             <Card.Text>
-              {props.role}
+              <h5>{props.role}</h5>
             </Card.Text>
             <NavLink to={`/members/${props.id}/tasks`}>
               <Button variant="primary" className="button mr-3"> Look all Tasks </Button>

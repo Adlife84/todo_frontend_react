@@ -11,7 +11,7 @@ class NewMember extends Component {
         email: "",
         img: "",
         status: "",
-        color: ""
+        color: "rgba(255, 255, 255, 0.5)"
     };
 
     handleValueChangeFirstName = (e) => {
@@ -59,10 +59,10 @@ class NewMember extends Component {
         
         return(
             <Container>
-                <Row className="myCard rounded" style={{background: 'rgba(255, 255, 255, 0.5)'}}>
-                    <Col md="auto">
-                        <h1 className="mt-5">New person: <br></br> {this.state.first_name} {this.state.last_name}</h1>
-                        <Image className="m-5 rounded-circle"  src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt={this.state.role} />
+                <Row className="myCard rounded" style={{background: this.state.color}}>
+                    <Col className="m-5">
+                        <h1 className="">New person: <br></br> {this.state.first_name} {this.state.last_name}</h1>
+                        <Image className=" rounded-circle"  src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" alt={this.state.role} />
                     </Col>
                     <Col >
                         <Form className="m-4" onSubmit={this.handleSubmit}>
@@ -133,12 +133,13 @@ class NewMember extends Component {
                                             as="select"
                                             value={this.state.color}
                                             onChange={this.handleValueChangeColor}>
-                                    <option value="rgba(137, 165, 255, 0.5)">Blue</option>
-                                    <option value="rgba(240, 136, 40, 0.5)">Orange</option>
-                                    <option value="rgba(255, 15, 19, 0.5)">Red</option>
-                                    <option value="rgba(255, 251, 15, 0.5)">Yellow</option>
-                                    <option value="rgba(204, 0, 190, 0.5)">Pink</option>
-                                    <option value="rgba(53, 153, 0, 0.5)">Green</option>
+                                            <option value="rgba(255, 255, 255, 0.5)">White</option>
+                                            <option value="rgba(137, 165, 255, 0.5)">Blue</option>
+                                            <option value="rgba(240, 136, 40, 0.5)">Orange</option>
+                                            <option value="rgba(255, 15, 19, 0.5)">Red</option>
+                                            <option value="rgba(255, 251, 15, 0.5)">Yellow</option>
+                                            <option value="rgba(204, 0, 190, 0.5)">Pink</option>
+                                            <option value="rgba(53, 153, 0, 0.5)">Green</option>
                                 </Form.Control>
                             </Form.Group>
                 
