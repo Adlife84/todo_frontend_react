@@ -58,7 +58,7 @@ class NewMember extends Component {
     render() {
         
         return(
-<Container>
+            <Container>
                 <Row className="myCard rounded" style={{background: 'rgba(255, 255, 255, 0.5)'}}>
                     <Col md="auto">
                         <h1 className="mt-5">New person: <br></br> {this.state.first_name} {this.state.last_name}</h1>

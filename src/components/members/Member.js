@@ -9,7 +9,9 @@ const Member = (props) => (
         <Card.Img className="mt-4 rounded-circle mx-auto"  src={props.img} alt={props.role} />
           <Card.Body >
             <Card.Title>
-              <NavLink className="card-title"style={{color: '#002366'}}
+              {props.status? <p>🔵  Available</p> : <p>🔴  Not Available</p> }
+              
+              <NavLink className="card-title cardMember-title" style={{color: '#002366'}}
                       to={`/members/${props.id}/tasks`}>
                       <h1>{props.first_name} <br></br> 
                       {props.last_name}</h1>

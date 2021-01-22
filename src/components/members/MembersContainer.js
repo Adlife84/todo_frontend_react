@@ -1,8 +1,7 @@
 import React from 'react';
 import Member from './Member';
-import AddMemberForm from './AddMemberForm';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Row, Col, Container} from 'react-bootstrap'
+import {Row, Container} from 'react-bootstrap'
 
 
 
@@ -17,6 +16,7 @@ const MembersContainer = (props) => {
                     email={member.email}
                     role={member.role}
                     id={member.id}
+                    status={member.status}
                     key={member.id}
                     removeMember={props.removeMember}
                     addTask={props.addTask}

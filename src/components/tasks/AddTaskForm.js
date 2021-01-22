@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { Form, Col, Row, Button, Container } from 'react-bootstrap'
+import { Form, Col, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 class AddTaskForm extends Component {
     state = {
-        title: ''
+        title: '',
+        done: false
     };
 
     handleValueChangeTitle = (e) => {

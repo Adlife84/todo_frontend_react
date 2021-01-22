@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import TaskComponent from './TaskComponent';
-import AddTaskForm from './AddTaskForm';
-import { Form, Col, Row, Button, Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -13,7 +11,9 @@ class TasksContainer extends Component {
     this.state = {
         memberID : props.match.params.id,
         member: {},
-        tasks: []
+        tasks: [],
+        task: {},
+        click: ""
 
     };
   }
@@ -46,6 +46,38 @@ class TasksContainer extends Component {
     
   }
 
+  handlerDoneTask = (memberID, taskID, task) => {
+    console.log("Hello from handlerDoneTask!", memberID, taskID, task);
+
+    //Checked that I got new Memeber
+    console.log(task);
+
+    const data = task;
+
+    fetch('http://localhost:3000/members/' + memberID + '/tasks/' + taskID, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+
+    this.setState(prevState => ({
+      click: prevState.click += 1
+    }));
+
+    console.log(this.state.click)
+
+  }
+  
+
   handleRemoveTask = (memberID, taskID) => {
     //Checked that I got id from Items
     console.log(memberID, taskID);
@@ -64,6 +96,8 @@ class TasksContainer extends Component {
     })
     .then(res => res.text()) // or res.json()
     .then(res => console.log(res))
+
+    
   }
 
 
@@ -97,13 +131,12 @@ class TasksContainer extends Component {
 
   render(){
     return (
-   
           <TaskComponent 
                           state={this.state} 
                           removeTask={this.handleRemoveTask}
                           handleAddTask={this.handleAddTask}
+                          doneTask={this.handlerDoneTask}
                           />
-      
     );
   }
 }

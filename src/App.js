@@ -5,7 +5,6 @@ import {
   Route, 
   Switch 
 } from 'react-router-dom';
-import { Container } from 'react-bootstrap'
 
 //App my components
 import Header from './components/Header';
@@ -38,13 +37,13 @@ class App extends Component {
     //Checked that I got id from Memebers
     console.log(id);
 
-    // // Remove data from state
-    // this.setState(prevState => {
-    //     return {
-    //         members: prevState.members.filter(p => p.id !== id)
-    //     };
+    // Remove data from state
+    this.setState(prevState => {
+        return {
+            members: prevState.members.filter(p => p.id !== id)
+        };
 
-    // });
+    });
 
   // Remove data from database by DELETE request with id
   fetch('http://localhost:3000/members/' + id, {
@@ -78,6 +77,8 @@ class App extends Component {
       .catch((error) => {
         console.error('Error:', error);
       });
+
+      window.location.href = '/members';
   }
 
 
