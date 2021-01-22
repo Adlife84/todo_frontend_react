@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-
+import { Form, Col, Row, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 class AddTaskForm extends Component {
     state = {
-        title: ''
+        title: '',
+        done: false
     };
 
     handleValueChangeTitle = (e) => {
@@ -18,22 +20,22 @@ class AddTaskForm extends Component {
     }
 
     render() {
-        
-        return(
-            
-                <form onSubmit={this.handleSubmit}>
-                    <input 
-                        type="text"
-                        value={this.state.title.value}
-                        onChange={this.handleValueChangeTitle}
-                        placeholder="Enter title of task"
-                    />
-                    <input 
-                        type="submit"
-                        value="Add task"
-                    />
-                </form>
-        
+        return(  
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Group className="row mt-5">
+                    <Col>
+                        <Form.Control className=""
+                                type="text"
+                                value={this.state.title}
+                                onChange={this.handleValueChangeTitle}
+                                placeholder="Enter title of task"
+                                required
+                                />
+                    </Col>
+                       
+                    <Button variant="success" type="submit">Add New Task</Button>
+                </Form.Group>
+            </Form> 
         );
     }
 }

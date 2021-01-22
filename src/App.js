@@ -15,6 +15,7 @@ import NewMember from './components/members/NewMember';
 import UpdateMemberForm from './components/members/UpdateMemberForm';
 
 
+
 class App extends Component {
 
   state = {
@@ -36,13 +37,13 @@ class App extends Component {
     //Checked that I got id from Memebers
     console.log(id);
 
-    // // Remove data from state
-    // this.setState(prevState => {
-    //     return {
-    //         members: prevState.members.filter(p => p.id !== id)
-    //     };
+    // Remove data from state
+    this.setState(prevState => {
+        return {
+            members: prevState.members.filter(p => p.id !== id)
+        };
 
-    // });
+    });
 
   // Remove data from database by DELETE request with id
   fetch('http://localhost:3000/members/' + id, {
@@ -76,6 +77,8 @@ class App extends Component {
       .catch((error) => {
         console.error('Error:', error);
       });
+
+      window.location.href = '/members';
   }
 
 
@@ -84,38 +87,38 @@ class App extends Component {
   render(){
     return(
       <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route
-                 exact path='/members'
-                  render={(props) => (
-                    <MembersContainer 
-                                      members={this.state.members}
-                                      removeMember={this.handleRemoveMember}
-                                      addMember={this.handleAddMember}
-                                      />
-                    )}
-          />
-          <Route
-                 exact path='/members/new'
-                  render={(props) => (
-                    <NewMember 
-                                      addMember={this.handleAddMember}
-                                      />
-                    )}
-          />
-          {/* <Route
-                 exact path='/members/:id'
-                  render={(props, {match}) => (
-                    <UpdateMemberForm 
-                                      addMember={this.handleAddMember}
-                                      />
-                    )}
-          /> */}
-          <Route path='/members/:id/tasks' component={TasksContainer}/>
-          <Route path='/members/:id' component={UpdateMemberForm}/>
-          <Route component={NotFound} />
-        </Switch>
+          <Header />
+          <Switch>
+            <Route
+                  exact path='/members'
+                    render={(props) => (
+                      <MembersContainer 
+                                        members={this.state.members}
+                                        removeMember={this.handleRemoveMember}
+                                        addMember={this.handleAddMember}
+                                        />
+                      )}
+            />
+            <Route
+                  exact path='/members/new'
+                    render={(props) => (
+                      <NewMember 
+                                        addMember={this.handleAddMember}
+                                        />
+                      )}
+            />
+            {/* <Route
+                  exact path='/members/:id'
+                    render={(props, {match}) => (
+                      <UpdateMemberForm 
+                                        addMember={this.handleAddMember}
+                                        />
+                      )}
+            /> */}
+            <Route path='/members/:id/tasks' component={TasksContainer}/>
+            <Route path='/members/:id' component={UpdateMemberForm}/>
+            <Route component={NotFound} />
+          </Switch>
       </BrowserRouter>
     )
   }

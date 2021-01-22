@@ -5,9 +5,75 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+/* 
+  background-image: url('https://img4.goodfon.com/wallpaper/nbig/a/8b/vector-blue-squares-abstract-background-geometric.jpg'); */
+  
+  background-image: url('https://img4.goodfon.com/wallpaper/nbig/a/8b/vector-blue-squares-abstract-background-geometric.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  
+  /* Animated backgroud color */
+  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite; */
+  
+
 }
+
+/* @keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+} */
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+img {
+  max-width: 200px;
+  border: 4px solid grey;
+}
+
+.member-title {
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+  font-size: 64px;
+
+}
+
+.cardMember-title {
+  
+}
+
+.member-role {
+  color: rgb(20, 20, 20);
+}
+
+.mainHeader {
+  color: white;
+  font-size: 72px;
+  text-shadow: 3px 3px 5px #000;
+}
+
+.myCard {
+  backdrop-filter: blur(5px);
+}
+
+.card-title:hover {
+  text-decoration: none;
+}
+
+.tasks {
+  font-size: px;
+}
+
