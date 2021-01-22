@@ -52,6 +52,11 @@ class TasksContainer extends Component {
     //Checked that I got new Memeber
     console.log(task);
 
+
+
+
+
+    // Sent adate to backend
     const data = task;
 
     fetch('http://localhost:3000/members/' + memberID + '/tasks/' + taskID, {
@@ -77,7 +82,7 @@ class TasksContainer extends Component {
 
   }
   
-
+  // Remove task by memberID and taskID
   handleRemoveTask = (memberID, taskID) => {
     //Checked that I got id from Items
     console.log(memberID, taskID);
@@ -107,6 +112,17 @@ class TasksContainer extends Component {
   handleAddTask = (memberID, task) => {
     //Checked that I got new task object { title: "Do something", done: "false"}
     console.log(task);
+
+    console.log("State before:", this.state.tasks);
+
+    // // Add data to state
+    // this.setState(prevState => {
+    //   return {
+    //       tasks: {title: "Test", done: false}
+    //   };
+    // });
+    
+    console.log("State after:", this.state.tasks);
 
     const data = task;
     // POST request http://localhost:3000/members/1/tasks

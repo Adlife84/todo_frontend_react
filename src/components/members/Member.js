@@ -6,8 +6,8 @@ import {Button, Card, Col} from 'react-bootstrap'
 const Member = (props) => (
     <Col className="mb-5">
       <Card className="myCard m-auto text-center h-100" style={{width: '350px', background: props.color}}>
-        <Card.Img className="mt-4 rounded-circle mx-auto"  src={props.img} alt={props.role} />
-          <Card.Body >
+        <Card.Img className="m-5 mt-4 rounded-circle mx-auto"  src={props.img} alt={props.role} />
+          <Card.Body style={{background: 'rgb(255, 255, 255)'}}>
             <Card.Title>
               {props.status? <p>🔵  Available</p> : <p>🔴  Not Available</p> }
               

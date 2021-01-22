@@ -100,20 +100,25 @@ class UpdateMemberForm extends Component {
         this.handleUpdateMember(this.state);
         this.setState({  }); //Reset input after added it to state
         console.log(this.state);
-        window.location.href = '/members';
+        window.location.href = '/members/' + this.state.memberID + 'tasks';
     }
+
+
 
     render() {
         
         return(
             <Container>
                 <Row className="myCard rounded" style={{background: this.state.color}}>
-                    <Col md="auto">
-                        <h1 className="m-5">Update: <br></br> {this.state.first_name} <br></br> {this.state.last_name}</h1>
-                        <h2 className="m-5">{this.state.role}</h2>
-                        <Image className="m-5 rounded-circle"  src={this.state.img} alt={this.state.role} />
+                    <Col className="m-5">
+                        <h1>Update Profile:</h1>
+                        <Image className="m-3 rounded-circle"  src={this.state.img} alt={this.state.role} />
+                        <h2>{this.state.first_name} {this.state.last_name}</h2>
+                        <h3>{this.state.role}</h3>
+                        { this.state.status? <p>🔵  Available</p> : <p>🔴  Not Available</p> }
+                        
                     </Col>
-                    <Col >
+                    <Col style={{background: 'rgba(255, 255, 255, 0.85)'}}>
                         <Form className="m-5" onSubmit={this.handleSubmit}>
                             <Form.Group >
                                 <Form.Label>First name</Form.Label>
@@ -122,6 +127,7 @@ class UpdateMemberForm extends Component {
                                     value={this.state.first_name}
                                     onChange={this.handleValueChangeFirstName}
                                     placeholder="Enter a first name"
+                                    required
                                     />
                                 <Form.Label>Last name</Form.Label>
                                 <Form.Control className="mb-2"
@@ -129,6 +135,7 @@ class UpdateMemberForm extends Component {
                                     value={this.state.last_name}
                                     onChange={this.handleValueChangeLastName}
                                     placeholder="Enter a last name"
+                                    required
                                     />
                                 <Form.Label>Role</Form.Label>
                                 <Form.Control className="mb-2"
@@ -136,6 +143,7 @@ class UpdateMemberForm extends Component {
                                     value={this.state.role}
                                     onChange={this.handleValueChangeRole}
                                     placeholder="Enter your role"
+                                    required
                                     />
                             </Form.Group>
                             <Form.Group >
@@ -145,6 +153,7 @@ class UpdateMemberForm extends Component {
                                     value={this.state.tel}
                                     onChange={this.handleValueChangePhone}
                                     placeholder="Enter your phone"
+                                    required
                                     />
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control className="mb-2"
@@ -152,6 +161,7 @@ class UpdateMemberForm extends Component {
                                     value={this.state.email}
                                     onChange={this.handleValueChangeEmail}
                                     placeholder="Enter your email"
+                                    required
                                     />
                             </Form.Group>
                             <Form.Group >
@@ -161,15 +171,9 @@ class UpdateMemberForm extends Component {
                                     value={this.state.img}
                                     onChange={this.handleValueChangeUrl}
                                     placeholder="Enter a URL of img"
+                                    required
                                     />
                                 <Form.Label>Status</Form.Label>
-                                {/* <Form.Control className="mb-2"
-                                    type="text"
-                                    value={this.state.status}
-                                    onChange={this.handleValueChangeStatus}
-                                    placeholder="Enter your status"
-                                    /> */}
-                                
                                 <Form.Control 
                                             className="col-sm-6 col-12 mb-2"
                                             as="select"
@@ -178,13 +182,13 @@ class UpdateMemberForm extends Component {
                                     <option value="true">Available</option>
                                     <option value="false">Not Available</option>
                                 </Form.Control>
-
                                 <Form.Label>Color</Form.Label>
                                 <Form.Control 
                                             className="col-sm-6 col-12 mb-2"
                                             as="select"
                                             value={this.state.color}
                                             onChange={this.handleValueChangeColor}>
+                                    <option value="rgba(255, 255, 255, 0.5)">White</option>
                                     <option value="rgba(137, 165, 255, 0.5)">Blue</option>
                                     <option value="rgba(240, 136, 40, 0.5)">Orange</option>
                                     <option value="rgba(255, 15, 19, 0.5)">Red</option>
@@ -193,16 +197,14 @@ class UpdateMemberForm extends Component {
                                     <option value="rgba(53, 153, 0, 0.5)">Green</option>
                                 </Form.Control>
                             </Form.Group>
-                
                             <Button variant="success"   className="mr-3" type="submit" value="Update">Update</Button>
                             <NavLink to="/members">
-                                <Button   variant="primary"  type="submit" value="Update">Cancel</Button>
+                                <Button   variant="primary"  type="submit" >Cancel</Button>
                             </NavLink>
                         </Form>
                     </Col>
                 </Row>
             </Container>
-        
         );
     }
 }

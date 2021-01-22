@@ -18,7 +18,7 @@ const TaskComponent = (props) => {
 
   return (
     <Container className="animate__animated animate__bounce myCard mt-5 rounded" style={{background: props.state.member.color}}>
-        <Row >
+        <Row className="p-5" >
           <Col>
             <img className="mt-5 rounded-circle mx-auto d-block"  src={props.state.member.img} alt={props.role} />
           </Col>
@@ -31,11 +31,15 @@ const TaskComponent = (props) => {
             </NavLink>
           </Col>
         </Row>
-        <Col className="p-5">
-          <h4>List of tasks:</h4>
-          {tasks}
-          <AddTaskForm memberID={props.state.memberID} addTask={props.handleAddTask}/>
-        </Col>
+        <Container className="p-5" style={{background: 'rgba(255, 255, 255, 0.85)'}}>
+         
+            <h4>List of tasks:</h4>
+        
+              {tasks}
+           
+            <AddTaskForm memberID={props.state.memberID} addTask={props.handleAddTask}/>
+      
+        </Container>
     </Container>
   );
 }

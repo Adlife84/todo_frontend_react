@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Row, Col} from 'react-bootstrap'
+import {Button, Row, Col, Container} from 'react-bootstrap'
 
 
 
@@ -37,24 +37,22 @@ class Task extends Component {
         
     return(
 
-      <Row className="task m-3">
-          <Col> 
-            <input
-                  name="isDone"
-                  type="checkbox"
-                  value="newsletter"
-                  checked={ this.props.done }
-                  onChange={this.handleInputChange}
-                  // onChange={ () => this.props.doneTask(this.props.task.memberID, this.props.task.taskID) }  // put here checked(false/true) props.memberID ans props.taksID 
-              />
-          </Col>
-          <Col >
-            { this.props.task.done? <p className="tasks" style={{ textDecorationLine: 'line-through' }}>{this.props.task.title}</p> : <p>{this.props.task.title}</p> } 
-          </Col>
-          <Col >
-            <Button className="mr-1" variant="danger" onClick={ () => this.props.removeTask(this.props.task.member_id, this.props.task.id)}>X</Button>
-          </Col>
-      </Row>
+        <Row className="task m-3 justify-content-between">
+  
+              <input className="  m-2 align-middle"
+                    name="isDone"
+                    type="checkbox"
+                    value="newsletter"
+                    checked={ this.props.done }
+                    onChange={this.handleInputChange}
+                />
+
+              { this.state.done? <h3 className="tasks" style={{ textDecorationLine: 'line-through' }}>{this.props.task.title}</h3> : <h3 className="">{this.props.task.title}</h3> } 
+          
+              <Button className="mr-1" variant="danger" onClick={ () => this.props.removeTask(this.props.task.member_id, this.props.task.id)}>X</Button>
+          
+        </Row>
+
     );
   }
 }

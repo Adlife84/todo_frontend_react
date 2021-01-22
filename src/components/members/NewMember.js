@@ -118,29 +118,28 @@ class NewMember extends Component {
                                     placeholder="Enter a URL of img"
                                     />
                                 <Form.Label>Status</Form.Label>
-                                <Form.Control className="mb-2"
-                                    type="text"
-                                    value={this.state.status}
-                                    onChange={this.handleValueChangeStatus}
-                                    placeholder="Enter your status"
-                                    />
-                                {/* <Form.Check 
-                                    type="checkbox" 
-                                    label="Available" 
-                                    value={this.state.status}
-                                    />
-                                <Form.Control as="select">
-                                    <option>true</option>
-                                    <option>false</option>
-                                </Form.Control> */}
+                                <Form.Control 
+                                            className="col-sm-6 col-12 mb-2"
+                                            as="select"
+                                            value={this.state.status}
+                                            onChange={this.handleValueChangeStatus}>
+                                    <option value="true">Available</option>
+                                    <option value="false">Not Available</option>
+                                </Form.Control>
 
                                 <Form.Label>Color</Form.Label>
-                                <Form.Control className="mb-2"
-                                    type="text"
-                                    value={this.state.color}
-                                    onChange={this.handleValueChangeColor}
-                                    placeholder="Enter your color"
-                                    />
+                                <Form.Control 
+                                            className="col-sm-6 col-12 mb-2"
+                                            as="select"
+                                            value={this.state.color}
+                                            onChange={this.handleValueChangeColor}>
+                                    <option value="rgba(137, 165, 255, 0.5)">Blue</option>
+                                    <option value="rgba(240, 136, 40, 0.5)">Orange</option>
+                                    <option value="rgba(255, 15, 19, 0.5)">Red</option>
+                                    <option value="rgba(255, 251, 15, 0.5)">Yellow</option>
+                                    <option value="rgba(204, 0, 190, 0.5)">Pink</option>
+                                    <option value="rgba(53, 153, 0, 0.5)">Green</option>
+                                </Form.Control>
                             </Form.Group>
                 
                             <Button   className="" type="submit" value="Update">Add New</Button>

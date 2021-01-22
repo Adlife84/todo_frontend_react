@@ -25,7 +25,7 @@ const MembersContainer = (props) => {
   return (
       <Container >
         <Row className="justify-content-center m-5">
-            <h1>My Start UP - Dream Team</h1>
+            <h1 className="mainHeader">My Start UP - Dream Team</h1>
         </Row>
         <Row>
            {members}

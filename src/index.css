@@ -57,8 +57,12 @@ img {
 
 .member-role {
   color: rgb(20, 20, 20);
-  
-  
+}
+
+.mainHeader {
+  color: white;
+  font-size: 72px;
+  text-shadow: 3px 3px 5px #000;
 }
 
 .myCard {
