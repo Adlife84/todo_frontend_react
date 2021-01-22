@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import { Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 class AddMemberForm extends Component {
     state = {
      
@@ -28,30 +29,31 @@ class AddMemberForm extends Component {
         
         return(
             
-                <form onSubmit={this.handleSubmit}>
-                    <input 
+                <Form.Group onSubmit={this.handleSubmit}>
+                    <Form.Control 
                         type="text"
                         value={this.state.value}
                         onChange={this.handleValueChangeFirstName}
                         placeholder="Enter a first name"
+                        
                     />
-                    <input 
+                    <Form.Control 
                         type="text"
                         value={this.state.value}
                         onChange={this.handleValueChangeLastName}
                         placeholder="Enter a last name"
                     />
-                    <input 
+                    <Form.Control 
                         type="text"
                         value={this.state.value}
                         onChange={this.handleValueChangeRole}
                         placeholder="Enter your role"
                     />
-                    <input 
+                    <Form.Control 
                         type="submit"
                         value="Add player"
                     />
-                </form>
+                </Form.Group>
         
         );
     }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TaskComponent from './TaskComponent';
-import AddTaskForm from './AddTaskForm';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 class TasksContainer extends Component {  
@@ -12,7 +11,9 @@ class TasksContainer extends Component {
     this.state = {
         memberID : props.match.params.id,
         member: {},
-        tasks: []
+        tasks: [],
+        task: {},
+        click: ""
 
     };
   }
@@ -45,6 +46,43 @@ class TasksContainer extends Component {
     
   }
 
+  handlerDoneTask = (memberID, taskID, task) => {
+    console.log("Hello from handlerDoneTask!", memberID, taskID, task);
+
+    //Checked that I got new Memeber
+    console.log(task);
+
+
+
+
+
+    // Sent adate to backend
+    const data = task;
+
+    fetch('http://localhost:3000/members/' + memberID + '/tasks/' + taskID, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+
+    this.setState(prevState => ({
+      click: prevState.click += 1
+    }));
+
+    console.log(this.state.click)
+
+  }
+  
+  // Remove task by memberID and taskID
   handleRemoveTask = (memberID, taskID) => {
     //Checked that I got id from Items
     console.log(memberID, taskID);
@@ -63,6 +101,8 @@ class TasksContainer extends Component {
     })
     .then(res => res.text()) // or res.json()
     .then(res => console.log(res))
+
+    
   }
 
 
@@ -72,6 +112,17 @@ class TasksContainer extends Component {
   handleAddTask = (memberID, task) => {
     //Checked that I got new task object { title: "Do something", done: "false"}
     console.log(task);
+
+    console.log("State before:", this.state.tasks);
+
+    // // Add data to state
+    // this.setState(prevState => {
+    //   return {
+    //       tasks: {title: "Test", done: false}
+    //   };
+    // });
+    
+    console.log("State after:", this.state.tasks);
 
     const data = task;
     // POST request http://localhost:3000/members/1/tasks
@@ -96,15 +147,12 @@ class TasksContainer extends Component {
 
   render(){
     return (
-      <div className="instructor-grid">
-
-        <div className="instructor-wrapper">
-
-          <TaskComponent state={this.state} removeTask={this.handleRemoveTask}/>
-          <AddTaskForm memberID={this.state.memberID} addTask={this.handleAddTask}/>
-        </div>
-
-      </div>
+          <TaskComponent 
+                          state={this.state} 
+                          removeTask={this.handleRemoveTask}
+                          handleAddTask={this.handleAddTask}
+                          doneTask={this.handlerDoneTask}
+                          />
     );
   }
 }

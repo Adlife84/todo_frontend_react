@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { Image, Container, Form, Button, Row, Col } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { NavLink } from 'react-router-dom';
 
 class UpdateMemberForm extends Component {
 
@@ -72,7 +75,7 @@ class UpdateMemberForm extends Component {
     }
 
     handleValueChangePhone = (e) => {
-        this.setState({ phone: e.target.value });
+        this.setState({ tel: e.target.value });
     }
 
     handleValueChangeEmail = (e) => {
@@ -97,80 +100,111 @@ class UpdateMemberForm extends Component {
         this.handleUpdateMember(this.state);
         this.setState({  }); //Reset input after added it to state
         console.log(this.state);
+        window.location.href = '/members/' + this.state.memberID + 'tasks';
     }
+
+
 
     render() {
         
         return(
-            <div>
-                <h1>Add New Member</h1>
-                <form onSubmit={this.handleSubmit}>
-                    
-                    <fieldset>
-                        <input 
-                            type="text"
-                            value={this.state.first_name}
-                            onChange={this.handleValueChangeFirstName}
-                            placeholder="Enter a first name"
-                        />
-                        <input 
-                            type="text"
-                            value={this.state.last_name}
-                            onChange={this.handleValueChangeLastName}
-                            placeholder="Enter a last name"
-                        />
-                         <input 
-                            type="text"
-                            value={this.state.role}
-                            onChange={this.handleValueChangeRole}
-                            placeholder="Enter your role"
-                    />
-                    </fieldset>
-
-                    <fieldset>
-                        <input 
-                            type="text"
-                            value={this.state.phone}
-                            onChange={this.handleValueChangePhone}
-                            placeholder="Enter your phone"
-                        />
-                        <input 
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.handleValueChangeEmail}
-                            placeholder="Enter your email"
-                        />
-                    </fieldset>
-
-                    <fieldset>
-                        <input 
-                            type="text"
-                            value={this.state.img_url}
-                            onChange={this.handleValueChangeUrl}
-                            placeholder="Enter a URL of img"
-                        />
-                        <input 
-                            type="text"
-                            value={this.state.status}
-                            onChange={this.handleValueChangeStatus}
-                            placeholder="Enter your status"
-                        />
-                        <input 
-                            type="text"
-                            value={this.state.color}
-                            onChange={this.handleValueChangeColor}
-                            placeholder="Enter your color"
-                        />
-                    </fieldset>
-                   
-                   
-                    <input 
-                        type="submit"
-                        value="Add Member"
-                    />
-                </form>
-            </div>
-        
+            <Container>
+                <Row className="myCard rounded" style={{background: this.state.color}}>
+                    <Col className="m-5">
+                        <h1>Update Profile:</h1>
+                        <Image className="m-3 rounded-circle"  src={this.state.img} alt={this.state.role} />
+                        <h2>{this.state.first_name} {this.state.last_name}</h2>
+                        <h3>{this.state.role}</h3>
+                        { this.state.status? <p>🔵  Available</p> : <p>🔴  Not Available</p> }
+                        
+                    </Col>
+                    <Col style={{background: 'rgba(255, 255, 255, 0.85)'}}>
+                        <Form className="m-5" onSubmit={this.handleSubmit}>
+                            <Form.Group >
+                                <Form.Label>First name</Form.Label>
+                                <Form.Control className="mb-2"
+                                    type="text"
+                                    value={this.state.first_name}
+                                    onChange={this.handleValueChangeFirstName}
+                                    placeholder="Enter a first name"
+                                    required
+                                    />
+                                <Form.Label>Last name</Form.Label>
+                                <Form.Control className="mb-2"
+                                    type="text"
+                                    value={this.state.last_name}
+                                    onChange={this.handleValueChangeLastName}
+                                    placeholder="Enter a last name"
+                                    required
+                                    />
+                                <Form.Label>Role</Form.Label>
+                                <Form.Control className="mb-2"
+                                    type="text"
+                                    value={this.state.role}
+                                    onChange={this.handleValueChangeRole}
+                                    placeholder="Enter your role"
+                                    required
+                                    />
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Phone</Form.Label>
+                                <Form.Control className="mb-2"
+                                    type="text"
+                                    value={this.state.tel}
+                                    onChange={this.handleValueChangePhone}
+                                    placeholder="Enter your phone"
+                                    required
+                                    />
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control className="mb-2"
+                                    type="text"
+                                    value={this.state.email}
+                                    onChange={this.handleValueChangeEmail}
+                                    placeholder="Enter your email"
+                                    required
+                                    />
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>URL for avatar img</Form.Label>
+                                <Form.Control className="mb-2"
+                                    type="text"
+                                    value={this.state.img}
+                                    onChange={this.handleValueChangeUrl}
+                                    placeholder="Enter a URL of img"
+                                    required
+                                    />
+                                <Form.Label>Status</Form.Label>
+                                <Form.Control 
+                                            className="col-sm-6 col-12 mb-2"
+                                            as="select"
+                                            value={this.state.status}
+                                            onChange={this.handleValueChangeStatus}>
+                                    <option value="true">Available</option>
+                                    <option value="false">Not Available</option>
+                                </Form.Control>
+                                <Form.Label>Color</Form.Label>
+                                <Form.Control 
+                                            className="col-sm-6 col-12 mb-2"
+                                            as="select"
+                                            value={this.state.color}
+                                            onChange={this.handleValueChangeColor}>
+                                    <option value="rgba(255, 255, 255, 0.5)">White</option>
+                                    <option value="rgba(137, 165, 255, 0.5)">Blue</option>
+                                    <option value="rgba(240, 136, 40, 0.5)">Orange</option>
+                                    <option value="rgba(255, 15, 19, 0.5)">Red</option>
+                                    <option value="rgba(255, 251, 15, 0.5)">Yellow</option>
+                                    <option value="rgba(204, 0, 190, 0.5)">Pink</option>
+                                    <option value="rgba(53, 153, 0, 0.5)">Green</option>
+                                </Form.Control>
+                            </Form.Group>
+                            <Button variant="success"   className="mr-3" type="submit" value="Update">Update</Button>
+                            <NavLink to="/members">
+                                <Button   variant="primary"  type="submit" >Cancel</Button>
+                            </NavLink>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
